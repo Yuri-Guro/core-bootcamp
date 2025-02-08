@@ -6,25 +6,25 @@ error YouAreNotError();
 
 contract SolidityErrors {
     address admin;
-    uint256 balance = 0;
+    uint256 balance = 10000;
 
     constructor(uint256 initialBalance, address allowedAddress) {
-        // balance = initialBalance;
-        // admin = allowedAddress;
+        balance = initialBalance;
+        admin = allowedAddress;
     }
 
     modifier isAdmin() {
-        // if (msg.sender != admin) {
-        //     revert YouAreNotError();
-        // }
-        // _;
+        if (msg.sender != admin) {
+        revert YouAreNotError();
+        }
+        _;
     }
 
     function addBalance(uint256 toAddBalance) public isAdmin {
-        // balance += toAddBalance;
+        balance += toAddBalance;
     }
 
     function getBalance() public view returns (uint256) {
-        // return balance;
+        return balance;
     }
 }

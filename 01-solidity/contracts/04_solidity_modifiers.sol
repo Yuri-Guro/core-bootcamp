@@ -4,7 +4,7 @@ import "hardhat/console.sol";
 
 contract SolidityModifiers {
     address admin;
-    uint256 balance = 0;
+    uint256 balance = 10000;
 
     constructor(uint256 initialBalance, address allowedAddress) {
         balance = initialBalance;
@@ -12,15 +12,15 @@ contract SolidityModifiers {
     }
 
     modifier isAdmin() {
-        // require(msg.sender == admin, "You are not allowed!");
-        // _;
+        require(msg.sender == admin, "You are not allowed!");
+        _;
     }
 
     function addBalance(uint256 toAddBalance) public isAdmin {
-        // balance += toAddBalance;
+        balance += toAddBalance;
     }
 
     function getBalance() public view returns (uint256) {
-        // return balance;
+        return balance;
     }
 }

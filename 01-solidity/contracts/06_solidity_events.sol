@@ -5,18 +5,18 @@ import "hardhat/console.sol";
 contract SolidityEvents {
     event BalanceAdded(address sender);
 
-    uint256 balance = 0;
+    uint256 balance = 10000;
 
     constructor(uint256 initialBalance) {
-        // balance = initialBalance;
+        balance = initialBalance;
     }
 
     function addBalance(uint256 toAddBalance) public {
-        // balance += toAddBalance;
-        // emit BalanceAdded(msg.sender);
+        balance += toAddBalance;
+        emit BalanceAdded(msg.sender);
     }
 
     function getBalance() public view returns (uint256) {
-        // return balance;
+        return balance;
     }
 }
